@@ -19,9 +19,10 @@ def get_recipes():
 
     # Prepare the groceries list for the OpenAI API prompt
     grocery_list = ", ".join([f"{item['quantity']} {item['name']}" for item in groceries])
+    num_people = request.json.get('num_people', 1)  # Default to 1 if not provided
 
     # Call the OpenAI API
-    prompt = f"Generate recipes using the following groceries: {grocery_list}"
+    prompt = f"I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. Please provide recipes using these ingredients, and specify how many meals I can make from them."
     
     try:
         response = openai.Completion.create(

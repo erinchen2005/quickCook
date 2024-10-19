@@ -22,11 +22,12 @@ def get_recipes():
     num_people = request.json.get('num_people', 1)  # Default to 1 if not provided
 
     # Call the OpenAI API
-    prompt = f"I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. Please provide recipes using these ingredients, and specify how many meals I can make from them."
+    prompt = f"I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. 
+    Please provide recipes using these ingredients, and specify how many meals I can make from them. Do not include any addition text of punctuation."
     
     try:
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            engine="gpt-3.5-turbo",
             prompt=prompt,
             max_tokens=150
         )

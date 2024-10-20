@@ -29,7 +29,7 @@ def get_recipes():
     prompt = f"""
 I have the following ingredients: {groceries_list}. I am cooking for {num_people} people. 
 Please provide multiple recipes using a portion of the ingredients for each recipe. Distribute the ingredients across several recipes, but use **reasonable portions** of each ingredient based on the number of people. 
-Ensure that if the ingredients are insufficient to feed {num_people} people, you provide a realistic estimate of how many people the groceries can feed per meal.
+Ensure that **if and only if** the ingredients are insufficient to feed {num_people} people, you provide a realistic estimate of how many people the groceries can feed per meal.
 
 - If the groceries are insufficient, state how many people they can reasonably serve and apologize.
 - Ensure portion sizes are realistic, and avoid using all of an ingredient unless necessary.

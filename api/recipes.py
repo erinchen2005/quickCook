@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from flask import Blueprint, request, jsonify
@@ -6,33 +6,66 @@ from flask import Blueprint, request, jsonify
 # Load environment variables from .env file
 load_dotenv()
 
-# Get the OpenAI API key from the .env file
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Initialize OpenAI client
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 get_recipes_blueprint = Blueprint('get_recipes', __name__)
 
 @get_recipes_blueprint.route('/get-recipes', methods=['POST'])
 def get_recipes():
     groceries = request.json.get('groceries', [])
+    num_people = request.json.get('num_people', 1)
+
     if not groceries:
         return jsonify({"error": "No groceries provided"}), 400
 
-    # Prepare the groceries list for the OpenAI API prompt
     grocery_list = ", ".join([f"{item['quantity']} {item['name']}" for item in groceries])
-    num_people = request.json.get('num_people', 1)  # Default to 1 if not provided
-
-    # Call the OpenAI API
     prompt = f"I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. Please provide recipes using these ingredients, and specify how many meals I can make from them."
-    
+
     try:
-        response = openai.Completion.create(
-            engine="gpt-3.5-turbo",
-            prompt=prompt,
-            max_tokens=150
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            model="gpt-3.5-turbo",
         )
         
-        recipes = response.choices[0].text.strip()
+        # recipes = chat_completion['choices'][0]['message']['content'].strip()
+        recipes = chat_completion.choices[0].message.content.strip()
         return jsonify({"recipes": recipes})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+def test_get_recipes():
+    # Simulated data
+    groceries = [
+        {"name": "potatoes", "quantity": 6},
+        {"name": "eggplants", "quantity": 2},
+        {"name": "carrots", "quantity": 1},
+        {"name": "bell peppers", "quantity": 6},
+        {"name": "pork loin", "quantity": 1}
+    ]
+    num_people = 2
+
+    # Prepare grocery list
+    grocery_list = ", ".join([f"{item['quantity']} {item['name']}" for item in groceries])
+    prompt = f"I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. Please provide recipes using these ingredients, and specify how many meals I can make from them."
+
+    try:
+        # OpenAI API call
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            model="gpt-3.5-turbo",
+        )
+        
+        recipes = chat_completion['choices'][0]['message']['content'].strip()
+        print({"recipes": recipes})
+
+    except Exception as e:
+        print({"error": str(e)})
+
+# Run the test
+test_get_recipes()

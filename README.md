@@ -12,5 +12,4 @@ To RUN REciPE BOT download the required dependencies and enter the top level dir
 ```
 > python3 ./app.py
 > cd my_app && npm start
-
 ```

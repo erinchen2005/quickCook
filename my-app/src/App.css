@@ -1,6 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure the body takes full height */
+  background-color: #2c2f33; /* Magic-themed background color */
+}
+
 .App {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Garamond', serif; /* Elegant font */
+  color: #ffffff; /* Light text color */
 }
 
 .chat-box {
@@ -21,12 +29,12 @@
 }
 
 .message.user {
-  background-color: #d1e7dd;
+  background-color: #7289da;
   align-self: flex-end;
 }
 
 .message.bot {
-  background-color: #f8d7da;
+  background-color: #99aab5;
   align-self: flex-start;
 }
 
@@ -46,7 +54,7 @@ input {
 button {
   padding: 10px 20px;
   margin-left: 10px;
-  background-color: #28a745;
+  background-color: #7289da;
   color: white;
   border: none;
   border-radius: 8px;
@@ -54,19 +62,24 @@ button {
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #5b6eae;
 }
 
 .recipes {
   margin-top: 20px;
 }
 
+.small-header {
+  font-size: 15px;
+  font-weight: normal;
+}
+
 .recipe {
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
   padding: 10px;
   margin: 10px 0;
-  background-color: #f9f9f9;
+  background-color: #40444b;
 }
 
 .recipe h2 {

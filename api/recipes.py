@@ -28,13 +28,17 @@ def get_recipes():
     # Create the prompt
     prompt = f"""
 I have the following ingredients: {groceries_list}. I am cooking for {num_people} people. 
-Please provide multiple recipes using these ingredients. Each recipe should use only a portion of the ingredients, but all of the groceries should be used across all recipes, if possible. 
-If the quantity of ingredients is not sufficient for {num_people} people, state how many people the groceries can realistically feed for one meal, and apologize if necessary.
+Please provide multiple recipes using a portion of the ingredients for each recipe. 
+Distribute the ingredients across multiple recipes, and ensure that **only a reasonable amount of each ingredient** is used per recipe. Do not use all of any ingredient in a single recipe unless absolutely necessary. 
+Make sure the recipes will reasonably feed {num_people} people for several meals.
+
+If there are enough groceries for multiple meals, provide recipes that cover them. 
+If the groceries are insufficient, state how many people they can realistically serve for a single meal.
 
 Each recipe should follow this **exact** format:
 
 - Recipe Title
-- Ingredients (list each ingredient with its quantity on a new line, separated by commas)
+- Ingredients, including quantity (list each ingredient on a new line, separated by commas)
 - Instructions (list steps numerically)
 - Number of servings (state how many servings this recipe makes)
 

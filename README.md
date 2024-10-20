@@ -1,5 +1,6 @@
 # cAIldron
-HackWashU 2024 Project Groceries-to-Recipes
+HackWashU 2024 Project Groceries-to-Recipes Website
+Input what groceries you have and this bot will generate recipes and help you plan meals!
 
 ### Team
 Erin Chen, Alson Yau

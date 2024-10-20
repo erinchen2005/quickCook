@@ -22,8 +22,8 @@ function App() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-        groceries: input.split(','),  // Assuming input as a comma-separated list
-        servings: numberOfPeople  // Add number of servings to the request
+        groceries: input,  // Assuming input as a comma-separated list
+        num_people: numberOfPeople  // Add number of servings to the request
       }),  
     });
 
@@ -61,24 +61,8 @@ function App() {
 
       {/* Display recipes */}
       <div className="recipes">
-        {recipes.map((recipe, index) => (
-          <div key={index} className="recipe">
-            <h2>{recipe.title}</h2>
-            <h3>Ingredients:</h3>
-            <ul>
-              {recipe.ingredients.map((ingredient, i) => (
-                <li key={i}>{ingredient}</li>
-              ))}
-            </ul>
-            <h3>Instructions:</h3>
-            <ol>
-              {recipe.instructions.map((instruction, i) => (
-                <li key={i}>{instruction}</li>
-              ))}
-            </ol>
-            <p><strong>Servings:</strong> {recipe.servings}</p>
-          </div>
-        ))}
+          <pre>{recipes}</pre> {/* This will display the entire raw recipe text */}
+
       </div>
 
       <div className="chat-box">
@@ -93,7 +77,7 @@ function App() {
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter groceries (comma-separated)..."
+          placeholder="Enter groceries (comma-separated) in the format: quantity item (e.g., 2 tomatoes, 1 lb ground beef)"
           rows="3"
           style={{ resize: 'vertical', width: '50%', padding: '10px', borderRadius: '8px', marginBottom: '10px' }} // Adding marginBottom to create space
         />

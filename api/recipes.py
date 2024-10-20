@@ -27,7 +27,7 @@ def get_recipes():
     
     # Create the prompt
     prompt = f"""
-I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. 
+I have the following ingredients: {groceries_list}. I am cooking for {num_people} people. 
 Please provide multiple recipes using these ingredients, and specify how many meals I can make from them. 
 Each recipe should use a subset of the ingredients and follow this **exact** format:
 

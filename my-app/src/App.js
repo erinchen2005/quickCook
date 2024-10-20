@@ -67,7 +67,7 @@ function App() {
       {/* Display recipes */}
       <div className="recipes">
         {recipes.length > 0 ? (
-          <pre>recipes</pre> // Display recipes in a readable format
+          <pre>{recipes}</pre> // Display recipes in a readable format
         ) : (
           <p>No recipes found.</p> // Message for when no recipes are available
         )}

@@ -66,11 +66,7 @@ function App() {
 
       {/* Display recipes */}
       <div className="recipes">
-        {recipes.length > 0 ? (
-          <pre>{JSON.stringify(recipes, null, 2)}</pre> // Display recipes in a readable format
-        ) : (
-          <p>No recipes found.</p> // Message for when no recipes are available
-        )}
+        <pre>{JSON.stringify(recipes, null, 2)}</pre> {/* Display recipes in a readable format */}
       </div>
 
       <div className="chat-box">

@@ -11,7 +11,7 @@ Erin Chen, Alson Yau
 React.js, Node.js, Flask, OpenAI GPT API
 
 ## Running the APP
-To RUN REciPE BOT download the required dependencies and enter the top level directory:
+To RUN cAIldron download the required dependencies and enter the top level directory:
 ```
 > python3 ./app.py
 > cd my_app && npm start

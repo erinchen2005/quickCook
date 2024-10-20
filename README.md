@@ -3,6 +3,7 @@ HackWashU 2024 Project Groceries-to-Recipes Website
 <p>
 Input what groceries you have and this bot will generate recipes and help you plan meals!
 </p>
+
 ### Team
 Erin Chen, Alson Yau
 

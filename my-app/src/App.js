@@ -77,7 +77,7 @@ function App() {
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter groceries (comma-separated) in the format: quantity item (e.g., 2 tomatoes, 1 lb ground beef)"
+          placeholder="Enter groceries (comma-separated) as: quantity item (e.g., 2 tomatoes, 1 lb ground beef)"
           rows="3"
           style={{ resize: 'vertical', width: '50%', padding: '10px', borderRadius: '8px', marginBottom: '10px' }} // Adding marginBottom to create space
         />

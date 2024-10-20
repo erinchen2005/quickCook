@@ -26,8 +26,19 @@ def get_recipes():
     grocery_list_str = ", ".join(groceries_list)
     
     # Create the prompt
-    prompt = f"I have the following ingredients: {grocery_list_str}. I am cooking for {num_people} people. Please provide recipes using these ingredients, and specify how many meals I can make from them."
+    prompt = f"""
+I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. 
+Please provide multiple recipes using these ingredients, and specify how many meals I can make from them. 
+Each recipe should use a subset of the ingredients and follow this **exact** format:
 
+- Recipe Title
+- Ingredients, including quantity (list each ingredient on a new line, separated by commas)
+- Instructions (list steps numerically)
+- Number of servings (state how many servings this recipe makes)
+
+Please follow this format exactly.
+"""
+    
     try:
         chat_completion = client.chat.completions.create(
             messages=[
@@ -43,7 +54,7 @@ def get_recipes():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-def test_get_recipes():
+# def test_get_recipes():
     # Simulated data
     groceries = [
         {"name": "potatoes", "quantity": 6},
@@ -85,4 +96,4 @@ Please follow this format exactly.
         print({"error": str(e)})
 
 # Run the test
-test_get_recipes()
+# test_get_recipes()

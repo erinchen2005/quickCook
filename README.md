@@ -1,4 +1,4 @@
-# quickCook
+# cAIldron
 HackWashU 2024 Project Groceries-to-Recipes
 
 ### Team

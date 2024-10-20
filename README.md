@@ -17,7 +17,7 @@ To RUN cAIldron download the required dependencies and enter the top level direc
 > cd my_app && npm start
 ```
 <p>
-  The api key is in a .env file that was not uploaded due to privacy issues.
+  An api key is required that is in a .env file which was not uploaded due to security issues.
 </p>
 
 ## Link to Demo

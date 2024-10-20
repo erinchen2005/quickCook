@@ -58,14 +58,15 @@ def test_get_recipes():
     grocery_list = ", ".join([f"{item['quantity']} {item['name']}" for item in groceries])
     prompt = f"""
 I have the following ingredients: {grocery_list}. I am cooking for {num_people} people. 
-Please provide multiple recipes using these ingredients. Each recipe should use a subset of the ingredients, not all of them, so that multiple meals can be made out of the groceries, unless the ingredients are too few and are only enough for one meal for the number of people given.
-Please format the output as follows:
-- Recipe Title
-- Ingredients, including quantity (list each ingredient on a new line)
-- Instructions (list steps numerically)
-- Number of servings
+Please provide multiple recipes using these ingredients, and specify how many meals I can make from them. 
+Each recipe should use a subset of the ingredients and follow this **exact** format:
 
-Make sure the format is exactly as shown above.
+- Recipe Title
+- Ingredients, including quantity (list each ingredient on a new line, separated by commas)
+- Instructions (list steps numerically)
+- Number of servings (state how many servings this recipe makes)
+
+Please follow this format exactly.
 """
 
     try:
